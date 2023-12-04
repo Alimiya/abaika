@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Работа</title>
+    <link rel="stylesheet" type="text/css" href="/job.css">
+    <script src="https://cdn.jsdelivr.net/npm/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div class="navbar-left">
+            <a data-i18n="job-link" href="/">Работа</a>
+            <a data-i18n="statistics-link" href="/statistics">Статистика</a>
+        </div>
+        <div class="navbar__logo-container">
+            <img class="navbar__logo-first" src="../../assets/logo no bg.png" alt="" width="50" height="65">
+            <img class="navbar__logo-second" src="../../assets/Шыгыс жастары (1).png" alt=""  width="60" height="60">
+        </div>
+        <div class="navbar-right">
+            <a class="navbar__item-language-switch" data-i18n="language-switch-link" href="#">Казахский</a>
+        </div>
+    </div>
+</header>
+
+<div class="content">
+    <h1 class="content__title">«NEET санатындағы жастармен жұмыс» әлеуметтік жобасы</h1>
+    <div class="filters">
+        <div class="filters__items">
+            <input class="filter__item-input-company" type="text" id="search-company" placeholder="Компания бойынша іздеу">
+            <input class="filter__item-input-description" type="text" id="search-description" placeholder="Аудан бойынша іздеу">
+            <input class="filter__item-input-direction" type="text" id="search-direction" placeholder="Бағыт бойынша іздеу">
+            <select id="sort-select">
+                <option class="sort-select__default-option" selected>Сорттау</option>
+                <option class="sort-select__alphabetically" value="asc">От а до я</option>
+                <option class="sort-select__inverse-alphabetically" value="desc">От я до а</option>
+                <option class="sort-select__ascending-date" value="dateAsc">Сортировка по возрастающей дате создания</option>
+                <option class="sort-select__descending-date" value="dateDesc">Сортировка по убывающей дате создания</option>
+            </select>
+        </div>
+        <button class="filters__search-btn">Поиск</button>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="job-list" id="jobcontainer">
+        <div class="job">
+            <div class="job__direction-company">
+                <h3 class="job__direction">new</h3>
+                <h5 class="job__company">new</h5>
+            </div>
+            <h4 class="job__description"></h4>
+            <p class="job__date"></p>
+        </div>
+    </div>
+    <div class="pagination" id="pagination"></div>
+    <div class="line bottom-line"></div>
+    <footer id="footer">
+        <div class="footer">
+            <div class="footer__phone-number">
+                <p class="footer__communication">Байланыс: </p>
+                <div class="footer__contacts">
+                    <p class="footer__fio">Исбергендыева Сағыныш Муратбекқызы</p>
+                    <p class="phone-number">+7 700 736 4008</p>
+                </div>
+            </div>
+            <div class="footer-email">
+                <p class="footer__name">Почта:</p>
+                <p class="footer__email">abaijastary2022@gmail.com</p>
+            </div>
+            <button class="footer__btn">Аудан бойынша</button>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal__contents">
+            <span class="modal__close">&times;</span>
+            <div class="modal__content">
+                <h1 class="modal__city">Семей</h1>
+                <h2 class="modal__name">Алдабергенов Аян Алдабергенұлы</h2>
+                <p class="modal__communications">+7 (771) 179 22 52 Naimanchik00@mail.ru</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Бородулиха</h1>
+                <h2 class="modal__name">Туктабаев Алдияр Айдынович</h2>
+                <p class="modal__communications">+7 (707) 622 42 52 morgan19972007@gmail.com</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Курчатов</h1>
+                <h2 class="modal__name">Жумурбаев Жумабек Джуматаевич</h2>
+                <p class="modal__communications">+7 (747) 522 50 88 zhumabek19019@gmail.com</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Бесқарағай</h1>
+                <h2 class="modal__name">Уалиева Назира Каршигаевна</h2>
+                <p class="modal__communications">+7 (777) 858 95 71 bzhastar@mail.ru</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Абай</h1>
+                <h2 class="modal__name">Ошакбаева Мадина Еркиновна</h2>
+                <p class="modal__communications">+7 (702) 113 79 37 abai_zhastar@mail.ru</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Көкпекті</h1>
+                <h2 class="modal__name">Мырзаханова Гүлімай Махмутқызы</h2>
+                <p class="modal__communications">+7 (705) 260 91 38 gulimay02@gmail.com</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Ақсуат</h1>
+                <h2 class="modal__name">Карл Әбілсейіт Мирланұлы</h2>
+                <p class="modal__communications">+7 (747) 245 90 41 a.k.m.007.kz@gmail.com</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Жарма</h1>
+                <h2 class="modal__name">Галымбекова Диана Ерлановна</h2>
+                <p class="modal__communications">+7 (707) 997 12 85 di.kabdullina@mail.ru</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Аягөз</h1>
+                <h2 class="modal__name">Исагалиев Жанибек Ахмадиұлы</h2>
+                <p class="modal__communications">+7 (707) 966 08 69 mc6vko@mail.ru</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Үржар</h1>
+                <h2 class="modal__name">Алиева Алима Құсайнқызы</h2>
+                <p class="modal__communications">+7 (702) 652 71 93 urzharjastary@mail.ru</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const pageSize = 5; // Количество вакансий на одной странице
+    let currentPage = 1; // Текущая страница
+    let vacancies = []; // Список всех вакансий
+    let filteredVacancies = []; // Отфильтрованные и отсортированные вакансии
+
+    // Функция для получения данных вакансий из API
+    async function fetchVacancies() {
+        try {
+            const response = await fetch('http://localhost:4000/api/vacancies');
+            const data = await response.json();
+            vacancies = data;
+            filteredVacancies = [...vacancies]; // Копируем вакансии в filteredVacancies
+            displayVacancies(currentPage); // Отображаем вакансии на первой странице
+        } catch (error) {
+            console.error('Ошибка получения данных:', error);
+        }
+    }
+
+    // Функция для отображения вакансий на странице
+    function displayVacancies(page) {
+        const jobContainer = document.getElementById('jobcontainer');
+        jobContainer.innerHTML = ''; // Очищаем контейнер с вакансиями
+
+        const startIndex = (page - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
+        const visibleVacancies = filteredVacancies.slice(startIndex, endIndex);
+
+        for (const vacancy of visibleVacancies) {
+            const jobElement = document.createElement('div');
+            jobElement.classList.add('job');
+
+            const jobDirectionCompanyElement = document.createElement('div');
+            jobDirectionCompanyElement.classList.add('job__direction-company');
+
+            const jobDirectionElement = document.createElement('h3');
+            jobDirectionElement.classList.add('job__direction');
+            jobDirectionElement.textContent = vacancy.direction;
+
+            const jobCompanyElement = document.createElement('h5');
+            jobCompanyElement.classList.add('job__company');
+            jobCompanyElement.textContent = vacancy.company;
+
+            jobDirectionCompanyElement.appendChild(jobDirectionElement);
+            jobDirectionCompanyElement.appendChild(jobCompanyElement);
+
+            const jobDescriptionElement = document.createElement('h4');
+            jobDescriptionElement.classList.add('job__description');
+            jobDescriptionElement.textContent = vacancy.regionV;
+
+            const jobDateElement = document.createElement('p');
+            const createdAt = new Date(vacancy.createdAt);
+            const day = String(createdAt.getDate()).padStart(2, '0');
+            const month = String(createdAt.getMonth() + 1).padStart(2, '0');
+            const year = createdAt.getFullYear();
+            const formattedDate = `${day}.${month}.${year}`;
+            jobDateElement.textContent = formattedDate;
+            jobDateElement.classList.add('job__date');
+
+            jobElement.appendChild(jobDirectionCompanyElement);
+            jobElement.appendChild(jobDescriptionElement);
+            jobElement.appendChild(jobDateElement);
+
+            jobContainer.appendChild(jobElement);
+        }
+    }
+
+    // Функция для обновления списка вакансий с учетом примененных фильтров
+    function updateVacancies() {
+        const searchCompany = document.getElementById('search-company').value.trim().toLowerCase();
+        const searchRegion = document.getElementById('search-description').value.trim().toLowerCase();
+        const searchDirection = document.getElementById('search-direction').value.trim().toLowerCase();
+        const sortOption = document.getElementById('sort-select').value;
+
+        filteredVacancies = vacancies.filter(vacancy =>
+            vacancy.company.toLowerCase().includes(searchCompany) &&
+            vacancy.regionV.toLowerCase().includes(searchRegion) &&
+            vacancy.direction.toLowerCase().includes(searchDirection)
+        );
+
+        switch (sortOption) {
+            case 'asc':
+                filteredVacancies.sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+                break;
+            case 'desc':
+                filteredVacancies.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+                break;
+            case 'dateAsc':
+                filteredVacancies.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+                break;
+            case 'dateDesc':
+                filteredVacancies.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                break;
+        }
+
+        currentPage = 1;
+        displayVacancies(currentPage);
+        updatePagination(); // Обновляем пагинацию после фильтрации
+    }
+
+    // Функция для обновления пагинации
+    function updatePagination() {
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+
+        const totalPages = Math.ceil(filteredVacancies.length / pageSize);
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            pageButton.addEventListener('click', () => {
+                currentPage = i;
+                displayVacancies(currentPage);
+            });
+            pagination.appendChild(pageButton);
+        }
+    }
+
+    // Обработчик клика на кнопку "Поиск"
+    const searchButton = document.querySelector('.filters__search-btn');
+    searchButton.addEventListener('click', () => {
+        updateVacancies();
+    });
+
+    // Загружаем данные вакансий из API при загрузке страницы
+    fetchVacancies();
+
+    function initPagination() {
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+
+        const totalPages = Math.ceil(filteredVacancies.length / pageSize);
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            pageButton.addEventListener('click', () => {
+                currentPage = i;
+                displayVacancies(currentPage);
+            });
+            pagination.appendChild(pageButton);
+        }
+    }
+
+    // Загружаем данные вакансий из API при загрузке страницы
+    fetchVacancies().then(() => {
+        initPagination(); // Инициализируем пагинацию после загрузки данных
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('/api/login/linktext') // Получаем текст ссылки с сервера
+            .then(response => response.json())
+            .then(data => {
+                const navbarRight = document.querySelector('.navbar-right')
+                const loginLink = document.createElement('a')
+                const adminLink = document.createElement('a')
+
+                loginLink.setAttribute('data-i18n', "login-link")
+                loginLink.href='/login'
+                loginLink.setAttribute('id', "login-link")
+
+                adminLink.setAttribute('data-i18n', "admin__link")
+                adminLink.href='/admin/users'
+
+                adminLink.textContent = 'Админ'
+
+                loginLink.textContent = data.loginLinkText;
+
+                if (data.loginLinkText === 'Кіру' || data.loginLinkText === 'Вход') {
+                    console.log(data.loginLinkText)
+                    console.log(loginLink)
+                    navbarRight.appendChild(loginLink)
+                } else {
+                    navbarRight.appendChild(adminLink)
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка при получении текста ссылки:', error);
+            });
+    });
+
+    const button = document.querySelector('.footer__btn');
+    const modal = document.getElementById('modal');
+    const closeBtn = document.querySelector('.modal__close');
+
+    button.addEventListener('click', function() {
+        modal.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+</script>
+<!--<script src="/job.js"></script>-->
+<script src="../../translation.js" type="text/javascript"></script>
+</body>
+</html>

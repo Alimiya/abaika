@@ -1,0 +1,121 @@
+<% users.forEach(function(user, i) { %>
+    <!-- Edit modal -->
+<div class="modal fade" id="updateModal<%= i %>" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/admin/users/update/<%= user._id %>" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateModalLabel" data-i18n="edit__modal">Edit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="iin" class="form-label" data-i18n="iin__link">IIN</label>
+                        <input type="text" class="form-control" id="iin" name="iin" inputmode="numeric" pattern="^(?=.*[0-9])\d{12}$" value="<%= user.iin%>" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label" data-i18n="name__link">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="<%= user.name%>" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="surname" class="form-label" data-i18n="surname__link">Surname</label>
+                        <input type="text" class="form-control" id="surname" name="surname" value="<%= user.surname%>" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastname" class="form-label" data-i18n="lastname__link">Lastname</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname" value="<%= user.lastname%>" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="region" class="form-label" data-i18n="region__link">Region</label>
+                      <%if(login==="true"){%>
+                        
+                        <select class="form-control" id="region" name="region" value="<%= user.region%>">
+                            <option value="Семей">Семей</option>
+                            <option value="Аксуат">Аксуат</option>
+                            <option value="Аягоз">Аягоз</option>
+                            <option value="Бескарагай">Бескарагай</option>
+                            <option value="Бородулиха">Бородулиха</option>
+                            <option value="Жармин">Жармин</option>
+                            <option value="Кокпекти">Кокпекти</option>
+                            <option value="Урджар">Урджар</option>
+                            <option value="Курчатов">Курчатов</option>
+                            <option value="Абай">Абай</option>
+                        </select>
+                      <%}%>
+                      <%if(login==="semey"){%>
+                        <select class="form-control" id="region" name="region" value="<%= user.region%>">
+                            <option value="Семей">Семей</option>
+                        </select>
+                       <%}%>
+                       <%if(login==="kurchatov"){%>
+                        <select class="form-control" id="region" name="region" value="<%= user.region%>">
+                            <option value="Курчатов">Курчатов</option>
+                        </select>
+                       <%}%>
+                       <%if(login==="abai"){%>
+                        <select class="form-control" id="region" name="region" value="<%= user.region%>">
+                            <option value="Абай">Абай</option>
+                        </select>
+                       <%}%>
+                       <%if(login==="aksuat"){%>
+                        <select class="form-control" id="region" name="region" value="<%= user.region%>">
+                            <option value="Аксуат">Аксуат</option>
+                        </select>
+                       <%}%>
+                       <%if(login==="ayagoz"){%>
+                        <select class="form-control" id="region" name="region" value="<%= user.region%>">
+                            <option value="Аягоз">Аягоз</option>
+                        </select>
+                       <%}%>
+                       <%if(login==="borodulikha"){%>
+                        <select class="form-control" id="region" name="region" value="<%= user.region%>">
+                            <option value="Бородулиха">Бородулиха</option>
+                        </select>
+                       <%}%>
+                       <%if(login==="beskaragai"){%>
+                        <select class="form-control" id="region" name="region" value="<%= user.region%>">
+                            <option value="Бескарагай">Бескарагай</option>
+                        </select>
+                       <%}%>
+                       <%if(login==="kokpekti"){%>
+                        <select class="form-control" id="region" name="region" value="<%= user.region%>">
+                            <option value="Кокпекти">Кокпекти</option>
+                        </select>
+                       <%}%>
+                       <%if(login==="zharma"){%>
+                        <select class="form-control" id="region" name="region" value="<%= user.region%>">
+                            <option value="Жармин">Жармин</option>
+                        </select>
+                       <%}%>
+                       <%if(login==="urzhar"){%>
+                        <select class="form-control" id="region" name="region" value="<%= user.region%>">
+                            <option value="Урджар">Урджар</option>
+                        </select>
+                       <%}%>
+                    
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label" data-i18n="email__link">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<%= user.email%>" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label" data-i18n="phone__number__link">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" name="phone" inputmode="numeric" pattern="^(?=.*[0-9])\d{11}$" value="<%= user.phone%>" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label" data-i18n="status__link">Status</label>
+                        <select class="form-control" id="status" name="status" required>
+                            <option value="Есть работа">Есть работа</option>
+                            <option value="Безработный">Безработный</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="clouse__link">Close</button>
+                    <button type="submit" class="btn btn-primary" data-i18n="save__link">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<% }); %>

@@ -1,0 +1,26 @@
+const express = require('express')
+const router = express.Router()
+const Controller = require('../../controllers/api/userController')
+
+//UserModel
+router.get('/users/nonadmin', Controller.getNonAdminUsers)
+router.get('/users', Controller.getAllUsers)
+router.get('/users/counts', Controller.getCounts)
+router.post('/users', Controller.createUser)
+router.get('/login/linktext', Controller.getLoginLinkText)
+router.put('/users/:id', Controller.updateUserById)
+router.delete('/users/:id', Controller.deleteUserById)
+router.get('/users/abay',Controller.getAbay)
+router.get('/users/semei',Controller.getSemei)
+router.get('/users/kurchatov', Controller.getKurchatov)
+router.get('/users/abai',Controller.getAbai)
+router.get('/users/aksuat',Controller.getAksuat)
+router.get('/users/ayagoz',Controller.getAyagoz)
+router.get('/users/borodulikha',Controller.getBorodulikha)
+router.get('/users/beskara',Controller.getBeskaragai)
+router.get('/users/kokpekti', Controller.getKokpekti)
+router.get('/users/jarmin',Controller.getZharmin)
+router.get('/users/urdjar', Controller.getUrzhar)
+router.get('/users/:id', Controller.getUserById)
+
+module.exports = router

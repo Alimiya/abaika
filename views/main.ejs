@@ -1,0 +1,43 @@
+<nav>
+    <ul>
+    <li><%if(!login){%><a href="/login">Login</a><%}else{%><a href="/logout">Logout</a><br><a href="/admin/users">Admin</a><%}%></li>
+    </ul>
+</nav>
+<form action="/search" method="GET">
+    <div>
+        <label for="searchQuery">Поиск по названию вакансии:</label>
+        <input type="text" id="searchQuery" name="searchQuery" value="<%= searchQuery || '' %>" placeholder="Введите название вакансии">
+    </div>
+    <div>
+        <label for="searchQueryDescription">Поиск по описанию:</label>
+        <input type="text" id="searchQueryDescription" name="searchQueryDescription" value="<%= searchQueryDescription || '' %>" placeholder="Введите описание вакансии">
+    </div>
+    <div>
+        <label for="sort">Сортировка:</label>
+        <select id="sort" name="sort">
+            <option value="">-- Выберите --</option>
+            <option value="az" <% if (sort === 'az') { %> selected <% } %>>От А до Я</option>
+            <option value="za" <% if (sort === 'za') { %> selected <% } %>>От Я до А</option>
+            <option value="newest" <% if (sort === 'newest') { %> selected <% } %>>Новые вакансии</option>
+            <option value="oldest" <% if (sort === 'oldest') { %> selected <% } %>>Старые вакансии</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Поиск</button>
+    </div>
+</form>
+
+<!-- searchResults.ejs -->
+<h1>Результаты поиска</h1>
+
+<ul>
+    <% works.forEach((work) => { %>
+    <li>
+        <p>Название <%= work.title %></p>
+        <p>Компания <%= work.company %></p>
+        <p>Описание <%= work.description %></p>
+        <p>Направление <%= work.direction %></p>
+        <p> Дата создания <%= work.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></p>
+    </li>
+    <%})%>
+</ul>

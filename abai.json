@@ -1,0 +1,155 @@
+[
+  {
+    "_id":  "1",
+    "iin": "000114550425",
+    "name": "Аян",
+    "surname": "Алдабергенов",
+    "lastname": "Алдабергенұлы",
+    "email": "Naimanchik00@mail.ru",
+    "phone":87711792252 ,
+    "status": "Админ",
+    "region": "Семей"
+  },
+  {
+    "_id":  "2",
+    "iin": "900119300580",
+    "name": "Жумабек",
+    "surname": "Жумурбаев",
+    "lastname": "Джуматаевич",
+    "email": "zhumabek19019@gmail.com",
+    "phone": 87475225088,
+    "status": "Админ",
+    "region": "Курчатов"
+  },
+  {
+    "_id":  "3",
+    "iin": "890830400092",
+    "name": "Мадина",
+    "surname": "Ошакбаева",
+    "lastname": "Еркиновна",
+    "email": "abai_zhastar@mail.ru",
+    "phone": 87021137937,
+    "status": "Админ",
+    "region": "Абай"
+  },
+  {
+    "_id":  "4",
+    "iin": "021209551228",
+    "name": "Әбілсейіт",
+    "surname": "Карл",
+    "lastname": "Мирланұлы",
+    "email": "a.k.m.007.kz@gmail.com",
+    "phone": 87472459041,
+    "status": "Админ",
+    "region": "Ақсуат"
+  },
+  {
+    "_id":  "5",
+    "iin": "960815350521",
+    "name": "Жанибек",
+    "surname": "Исагалиев",
+    "lastname": "Ахмадиұлы",
+    "email": "mc6vko@mail.ru",
+    "phone": 87079660869,
+    "status": "Админ",
+    "region": "Аягөз"
+  },
+  {
+    "_id":  "6",
+    "iin": "030416550462",
+    "name": "Алдияр",
+    "surname": "Туктабаев",
+    "lastname": "Айдынович",
+    "email": "morgan19972007@gmail.com",
+    "phone":87076224240 ,
+    "status": "Админ",
+    "region": "Бородулиха"
+  },
+  {
+    "_id":  "7",
+    "iin": "860711400723",
+    "name": "Назира",
+    "surname": "Уалиева",
+    "lastname": "Каршигаевна",
+    "email": "bzhastar@mail.ru",
+    "phone": 87778589571,
+    "status": "Админ",
+    "region": "Бесқарағай"
+  },
+  {
+    "_id":  "8",
+    "iin": "020507651211",
+    "name": "Гүлімай",
+    "surname": "Мырзаханова",
+    "lastname": "Махмутқызы",
+    "email": "gulimay02@gmail.com",
+    "phone": 87052609138,
+    "status": "Админ",
+    "region": "Көкпекті"
+  },
+  {
+    "_id":  "9",
+    "iin": "990421450303",
+    "name": "Диана",
+    "surname": "Галымбекова",
+    "lastname": "Ерлановна",
+    "email": "di.kabdulina@mail.ru",
+    "phone": 87079971285,
+    "status": "Админ",
+    "region": "Жарма"
+  },
+  {
+    "_id":  "10",
+    "iin": "001227651040",
+    "name": "Алима",
+    "surname": "Алиева",
+    "lastname": "Құсайнқызы",
+    "email": "urzharjastary@mail.ru",
+    "phone": 87026527193,
+    "status": "Админ",
+    "region": "Үржар"
+  },
+  {}
+]
+
+
+
+/home/ubuntu/abaijastary/config/.env
+/home/ubuntu/abaijastary/controllers/api/userController.js
+/home/ubuntu/abaijastary/controllers/api/vacancyController.js
+/home/ubuntu/abaijastary/controllers/adminController.js
+/home/ubuntu/abaijastary/controllers/loginController.js
+/home/ubuntu/abaijastary/controllers/workController.js
+/home/ubuntu/abaijastary/models/userModel.js
+/home/ubuntu/abaijastary/models/vacancyModel.js
+/home/ubuntu/abaijastary/public/assets/logo no bg.png
+/home/ubuntu/abaijastary/public/assets/Шыгыс жастары (1).png
+/home/ubuntu/abaijastary/public/job.css
+/home/ubuntu/abaijastary/public/job.js
+/home/ubuntu/abaijastary/public/login.css
+/home/ubuntu/abaijastary/public/login.js
+/home/ubuntu/abaijastary/public/statistics.css
+/home/ubuntu/abaijastary/public/statistics.js
+/home/ubuntu/abaijastary/public/translation.js
+/home/ubuntu/abaijastary/routes/api/user.js
+/home/ubuntu/abaijastary/routes/api/vacancy.js
+/home/ubuntu/abaijastary/routes/admin.js
+/home/ubuntu/abaijastary/routes/route.js
+/home/ubuntu/abaijastary/routes/work.js
+/home/ubuntu/abaijastary/views/components/addModal.ejs
+/home/ubuntu/abaijastary/views/components/addVacancyModal.ejs
+/home/ubuntu/abaijastary/views/components/deleteModal.ejs
+/home/ubuntu/abaijastary/views/components/deleteVacancyModal.ejs
+/home/ubuntu/abaijastary/views/components/editModal.ejs
+/home/ubuntu/abaijastary/views/components/editVacancyModal.ejs
+/home/ubuntu/abaijastary/views/job/job.html
+/home/ubuntu/abaijastary/views/login/login.html
+/home/ubuntu/abaijastary/views/admin.ejs
+/home/ubuntu/abaijastary/views/adminWork.ejs
+/home/ubuntu/abaijastary/views/login.ejs
+/home/ubuntu/abaijastary/views/main.ejs
+/home/ubuntu/abaijastary/views/statistics.ejs
+/home/ubuntu/abaijastary/views/statistics.html
+/home/ubuntu/abaijastary/app.js
+/home/ubuntu/abaijastary/package.json
+/home/ubuntu/abaijastary/package-lock.json

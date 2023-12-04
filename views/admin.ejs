@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .table-container {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Users</title>
+</head>
+<body>
+<a class="navbar__item-language-switch" data-i18n="language-switch-link" href="#" style="margin-left: 10px">Казахский</a>
+<h1 style="margin-left: 10px">Admin Panel</h1>
+<div class="table-container">
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th data-i18n="id__link">ID</th>
+                <th data-i18n="iin__link">IIN</th>
+                <th data-i18n="surname__link">Surname</th>
+                <th data-i18n="name__link">Name</th>
+                <th data-i18n="lastname__link">Lastname</th>
+                <th data-i18n="region__link">Region</th>
+                <th data-i18n="email__link">Email</th>
+                <th data-i18n="phone__number__link">Phone Number</th>
+                <th data-i18n="status__link">Статус</th>
+                <th data-i18n="actions__link">Actions</th>
+            </tr>
+            </thead>
+            <tbody id="userTableBody">
+            </tbody>
+        </table>
+    </div>
+    <!-- Add this after the table -->
+    <ul class="pagination justify-content-center" id="pagination"></ul>
+</div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4  d-flex justify-content-between">
+            <button onclick="window.location.href='/'" class="btn btn-success btn-group" style="margin-left: 10px" data-i18n="main__admin">Main</button>
+            <button type="button" class="btn btn-success btn-group" data-bs-toggle="modal" data-bs-target="#addModal" data-i18n="add__modal">Add User</button>
+            <button type="button" class="btn btn-primary btn-group" onclick="window.location.href='/admin/works'" data-i18n="button__vacancies">Vacancies</button>
+            <form action="/logout" method="get">
+                <button type="submit" class="btn btn-danger btn-group" data-i18n="logout__link">Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('./components/addModal');%>
+<%- include('./components/editModal');%>
+<%- include('./components/deleteModal');%>
+
+<script src="https://cdn.jsdelivr.net/npm/i18next/dist/umd/i18next.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+<script src="../translation.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    let currentPage = 1;
+    async function fetchData(page = 1) {
+
+        try {
+            const login = getCookie('auth'); // replace with the name of your cookie
+
+            if (!login) {
+                console.error('Login information not found.');
+                return;
+            }
+
+            const usersResponse = await axios.get(`/api/users`);
+            const users = usersResponse.data;
+
+            const tableBody = document.getElementById('userTableBody');
+
+            users.forEach((user, i) => {
+                if (user.status !== "Админ") {
+                    if (login === "true" || (login === "semey" && user.region === "Семей") ||
+                        (login === "kurchatov" && user.region === "Курчатов") ||(login==="abai" && user.region ==="Абай")
+                    || (login==="aksuat" && user.region ==="Аксуат")
+                    || (login==="ayagoz" && user.region ==="Аягөз")
+                    || (login==="borodulikha" && user.region ==="Бородулиха")
+                    || (login==="beskaragai" && user.region ==="Бескарагай")
+                    || (login==="kokpekti" && user.region ==="Кокпекти")
+                    || (login==="zharma" && user.region ==="Жармин")
+                    || (login==="urzhar" && user.region ==="Урджар")) {
+                        const row = createTableRow(user, i);
+                        tableBody.appendChild(row);
+                    } // add more conditions for other regions and logins
+                }
+            });
+
+            const itemsPerPage = 10; // Set the number of items per page
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+
+            // Slice the users array based on the calculated indices
+            const usersSlice = users.slice(startIndex, endIndex);
+
+            // ... (existing code to create table rows)
+
+            // Call a new function to create pagination links
+            createPaginationLinks(users.length, itemsPerPage, page);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
+    function createPaginationLinks(totalItems, itemsPerPage, currentPage) {
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        const paginationElement = document.getElementById('pagination');
+
+        // Clear previous pagination links
+        paginationElement.innerHTML = '';
+
+        // Create "Previous" button
+        const previousButton = document.createElement('li');
+        previousButton.classList.add('page-item');
+        previousButton.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage - 1})">Previous</a>`;
+        paginationElement.appendChild(previousButton);
+
+        // Create page links
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('li');
+            pageButton.classList.add('page-item', i === currentPage ? 'active' : '');
+            pageButton.innerHTML = `<a class="page-link" href="#" onclick="changePage(${i})">${i}</a>`;
+            paginationElement.appendChild(pageButton);
+        }
+
+        // Create "Next" button
+        const nextButton = document.createElement('li');
+        nextButton.classList.add('page-item');
+        nextButton.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage + 1})">Next</a>`;
+        paginationElement.appendChild(nextButton);
+    }
+
+    function changePage(page) {
+        currentPage = page;
+        fetchData(page);
+    }
+
+    function createTableRow(user, i) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${user._id}</td>
+            <td>${user.iin}</td>
+            <td>${user.surname}</td>
+            <td>${user.name}</td>
+            <td>${user.lastname}</td>
+            <td>${user.region}</td>
+            <td>${user.email}</td>
+            <td>${user.phone}</td>
+            <td>${user.status}</td>
+            <td>
+                <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateModal${i}" data-i18n="edit__modal">Edit</button>
+                <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteModal${i}" data-i18n="delete__modal">Delete</button>
+            </td>
+        `;
+        return tr;
+    }
+
+    function getCookie(name) {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith(name + '=')) {
+                return cookie.substring(name.length + 1);
+            }
+        }
+        return null;
+    }
+
+    fetchData();
+</script>
+</body>
+</html>

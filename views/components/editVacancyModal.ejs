@@ -1,0 +1,101 @@
+<% works.forEach(function(work, i) { %>
+    <!-- Edit Work modal -->
+    <div class="modal fade" id="updateWorkModal<%= i %>" tabindex="-1" aria-labelledby="updateWorkModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/admin/works/update/<%= work._id %>" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateWorkModalLabel" data-i18n="edit__modal">Edit</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="company" class="form-label" data-i18n="company__link">Company</label>
+                            <input type="text" class="form-control" id="company" name="company" value="<%= work.company%>" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="regionV" class="form-label" data-i18n="region__link">Region</label>
+                            <%if(login==="true"){%>
+                        
+                                <select class="form-control" id="regionV" name="regionV" value="<%= work.regionV%>">
+                                    <option value="Семей">Семей</option>
+                                    <option value="Аксуат">Аксуат</option>
+                                    <option value="Аягоз">Аягоз</option>
+                                    <option value="Бескарагай">Бескарагай</option>
+                                    <option value="Бородулиха">Бородулиха</option>
+                                    <option value="Жармин">Жармин</option>
+                                    <option value="Кокпекти">Кокпекти</option>
+                                    <option value="Урджар">Урджар</option>
+                                    <option value="Курчатов">Курчатов</option>
+                                    <option value="Абай">Абай</option>
+                                </select>
+                              <%}%>
+                              <%if(login==="semey"){%>
+                                <select class="form-control" id="regionV" name="regionV" value="<%= work.regionV%>">
+                                    <option value="Семей">Семей</option>
+                                </select>
+                               <%}%>
+                               <%if(login==="kurchatov"){%>
+                                <select class="form-control" id="regionV" name="regionV" value="<%= work.regionV%>">
+                                    <option value="Курчатов">Курчатов</option>
+                                </select>
+                               <%}%>
+                               <%if(login==="abai"){%>
+                                <select class="form-control" id="regionV" name="regionV" value="<%= work.regionV%>">
+                                    <option value="Абай">Абай</option>
+                                </select>
+                               <%}%>
+                               <%if(login==="aksuat"){%>
+                                <select class="form-control" id="regionV" name="regionV" value="<%= work.regionV%>">
+                                    <option value="Аксуат">Аксуат</option>
+                                </select>
+                               <%}%>
+                               <%if(login==="ayagoz"){%>
+                                <select class="form-control" id="regionV" name="regionV" value="<%= work.regionV%>">
+                                    <option value="Аягоз">Аягоз</option>
+                                </select>
+                               <%}%>
+                               <%if(login==="borodulikha"){%>
+                                <select class="form-control" id="regionV" name="regionV" value="<%= work.regionV%>">
+                                    <option value="Бородулиха">Бородулиха</option>
+                                </select>
+                               <%}%>
+                               <%if(login==="beskaragai"){%>
+                                <select class="form-control" id="regionV" name="regionV" value="<%= work.regionV%>">
+                                    <option value="Бескарагай">Бескарагай</option>
+                                </select>
+                               <%}%>
+                               <%if(login==="kokpekti"){%>
+                                <select class="form-control" id="regionV" name="regionV" value="<%= work.regionV%>">
+                                    <option value="Кокпекти">Кокпекти</option>
+                                </select>
+                               <%}%>
+                               <%if(login==="zharma"){%>
+                                <select class="form-control" id="regionV" name="regionV" value="<%= work.regionV%>">
+                                    <option value="Жармин">Жармин</option>
+                                </select>
+                               <%}%>
+                               <%if(login==="urzhar"){%>
+                                <select class="form-control" id="regionV" name="regionV" value="<%= work.regionV%>">
+                                    <option value="Урджар">Урджар</option>
+                                </select>
+                               <%}%>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label" data-i18n="description__link">Description</label>
+                            <input type="text" class="form-control" id="description" name="description" value="<%= work.description%>" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="direction" class="form-label" data-i18n="direction__link">Direction</label>
+                            <input type="text" class="form-control" id="direction" name="direction" value="<%= work.direction%>" >
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="clouse__link">Close</button>
+                        <button type="submit" class="btn btn-primary" data-i18n="save__link">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<% }); %>

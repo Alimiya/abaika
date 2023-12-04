@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Статистика</title>
+    <link rel="stylesheet" type="text/css" href="/statistics.css">
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div class="navbar-left">
+            <a data-i18n="job-link" href="/">Работа</a>
+            <a data-i18n="statistics-link" href="/statistics">Статистика</a>
+        </div>
+        <div class="navbar__logo-container">
+            <img class="navbar__logo-first" src="../../assets/logo no bg.png" alt="" width="50" height="65">
+            <img class="navbar__logo-second" src="../../assets/Шыгыс жастары (1).png" alt="" width="60" height="60">
+        </div>
+        <div class="navbar-right">
+            <a class="navbar__item-language-switch" data-i18n="language-switch-link" href="#">Казахский</a>
+        </div>
+    </div>
+</header>
+
+<div class="content">
+    <h1 class="content__title">«NEET санатындағы жастармен жұмыс» әлеуметтік жобасы</h1>
+    <div class="blocks">
+        <div class="block">
+            <p id="total-count"></p>
+            <h2 class="general-population-title" data-i18n="general-population-title">Общая численность</h2>
+        </div>
+        <div class="block">
+            <p id="employed-count"></p>
+            <h2 class="employed-population-title" data-i18n="employed-population-title">Рабочие</h2>
+        </div>
+        <div class="block">
+            <p id="unemployed-count"></p>
+            <h2 class="unemployed-population-title" data-i18n="unemployed-population-title">Безработные</h2>
+        </div>
+    </div>
+
+    <div class="chart-section">
+        <div class="chart-container">
+            <canvas id="chart"></canvas>
+        </div>
+
+        <div class="table">
+            <button id="button-abay-area" class="area__title-button" data-i18n="area-title">Абай облысы</button>
+            <div class="buttons">
+                <div class="buttons__left">
+                    <button id="button-semei">Семей</button>
+                    <button id="button-kurchatov">Курчатов</button>
+                    <button id="button-abai">Абай</button>
+                    <button id="button-aksuat">Ақсуат</button>
+                    <button id="button-ayagoz">Аягөз</button>
+                </div>
+                <div class="buttons__right">
+                    <button id="button-borodulikha">Бородулиха</button>
+                    <button id="button-beskara">Бесқарағай</button>
+                    <button id="button-kokpekti">Көкпекті</button>
+                    <button id="button-jarmin">Жарма</button>
+                    <button id="button-urdjar">Үржар</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="line"></div>
+    <footer id="footer">
+        <div class="footer">
+            <div class="footer__phone-number">
+                <p class="footer__communication">Байланыс: </p>
+                <div class="footer__contacts">
+                    <p class="footer__fio">Исбергендыева Сағыныш Муратбекқызы</p>
+                    <p class="phone-number">+7 700 736 4008</p>
+                </div>
+            </div>
+            <div class="footer-email">
+                <p class="footer__name">Почта:</p>
+                <p class="footer__email">abaijastary2022@gmail.com</p>
+            </div>
+            <button class="footer__btn">Аудан бойынша</button>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal__contents">
+            <span class="modal__close">&times;</span>
+            <div class="modal__content">
+                <h1 class="modal__city">Семей</h1>
+                <p class="modal__name">Алдабергенов Аян Алдабергенұлы</p>
+                <p class="modal__communications">+7 (771) 179 22 52 Naimanchik00@mail.ru</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Бородулиха</h1>
+                <p class="modal__name">Туктабаев Алдияр Айдынович</p>
+                <p class="modal__communications">+7 (707) 622 42 52 morgan19972007@gmail.com</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Курчатов</h1>
+                <p class="modal__name">Жумурбаев Жумабек Джуматаевич</p>
+                <p class="modal__communications">+7 (747) 522 50 88 zhumabek19019@gmail.com</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Бесқарағай</h1>
+                <p class="modal__name">Уалиева Назира Каршигаевна</p>
+                <p class="modal__communications">+7 (777) 858 95 71 bzhastar@mail.ru</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Абай</h1>
+                <p class="modal__name">Ошакбаева Мадина Еркиновна</p>
+                <p class="modal__communications">+7 (702) 113 79 37 abai_zhastar@mail.ru</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Көкпекті</h1>
+                <p class="modal__name">Мырзаханова Гүлімай Махмутқызы</p>
+                <p class="modal__communications">+7 (705) 260 91 38 gulimay02@gmail.com</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Ақсуат</h1>
+                <p class="modal__name">Карл Әбілсейіт Мирланұлы</p>
+                <p class="modal__communications">+7 (747) 245 90 41 a.k.m.007.kz@gmail.com</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Жарма</h1>
+                <p class="modal__name">Галымбекова Диана Ерлановна</p>
+                <p class="modal__communications">+7 (707) 997 12 85 di.kabdullina@mail.ru</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Аягөз</h1>
+                <p class="modal__name">Исагалиев Жанибек Ахмадиұлы</p>
+                <p class="modal__communications">+7 (707) 966 08 69 mc6vko@mail.ru</p>
+            </div>
+            <div class="modal__content">
+                <h1 class="modal__city">Үржар</h1>
+                <p class="modal__name">Алиева Алима Құсайнқызы</p>
+                <p class="modal__communications">+7 (702) 652 71 93 urzharjastary@mail.ru</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../statistics.js"></script>
+<script src="../translation.js"></script>
+</body>
+</html>

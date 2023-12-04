@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" href="/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div class="navbar-left">
+            <a data-i18n="job-link" href="/">Работа</a>
+            <a data-i18n="statistics-link" href="/statistics">Статистика</a>
+        </div>
+        <div class="navbar__logo-container">
+            <img class="navbar__logo-first" src="../../assets/logo no bg.png" alt="" width="50" height="65">
+            <img class="navbar__logo-second" src="../../assets/Шыгыс жастары (1).png" alt=""  width="60" height="60">
+        </div>
+        <div class="navbar-right">
+            <a class="navbar__item-language-switch" data-i18n="language-switch-link" href="#">Казахский</a>
+        </div>
+    </div>
+</header>
+
+<div class="login-container">
+    <h2 class="login-container__title">Вход</h2>
+    <div id="error-container"></div>
+    <form id="login-form">
+        <div>
+            <input class="input-iin" type="text" id="iin" placeholder="ИИН" required>
+        </div>
+        <div>
+            <input class="input-email" type="text" id="email" placeholder="Email" required>
+        </div>
+        <div>
+            <input class="input-phone" type="tel" id="phone" placeholder="Мобильный номер" required>
+        </div>
+        <input class="enter-btn" type="submit" value="Войти">
+    </form>
+</div>
+
+<div class="line"></div>
+<footer id="footer">
+    <div class="footer">
+        <div class="footer__phone-number">
+            <p class="footer__communication">Байланыс: </p>
+            <div class="footer__contacts">
+                <p class="footer__fio">Исбергендыева Сағыныш Муратбекқызы</p>
+                <p class="phone-number">+7 700 736 4008</p>
+            </div>
+        </div>
+        <div class="footer-email">
+            <p class="footer__name">Почта:</p>
+            <p class="footer__email">abaijastary2022@gmail.com</p>
+        </div>
+        <button class="footer__btn">Аудан бойынша</button>
+    </div>
+</footer>
+
+<div id="modal" class="modal">
+    <div class="modal__contents">
+        <span class="modal__close">&times;</span>
+        <div class="modal__content">
+            <h1 class="modal__city">Семей</h1>
+            <h2 class="modal__name">Алдабергенов Аян Алдабергенұлы</h2>
+            <p class="modal__communications">+7 (771) 179 22 52 Naimanchik00@mail.ru</p>
+        </div>
+        <div class="modal__content">
+            <h1 class="modal__city">Бородулиха</h1>
+            <h2 class="modal__name">Туктабаев Алдияр Айдынович</h2>
+            <p class="modal__communications">+7 (707) 622 42 52 morgan19972007@gmail.com</p>
+        </div>
+        <div class="modal__content">
+            <h1 class="modal__city">Курчатов</h1>
+            <h2 class="modal__name">Жумурбаев Жумабек Джуматаевич</h2>
+            <p class="modal__communications">+7 (747) 522 50 88 zhumabek19019@gmail.com</p>
+        </div>
+        <div class="modal__content">
+            <h1 class="modal__city">Бесқарағай</h1>
+            <h2 class="modal__name">Уалиева Назира Каршигаевна</h2>
+            <p class="modal__communications">+7 (777) 858 95 71 bzhastar@mail.ru</p>
+        </div>
+        <div class="modal__content">
+            <h1 class="modal__city">Абай</h1>
+            <h2 class="modal__name">Ошакбаева Мадина Еркиновна</h2>
+            <p class="modal__communications">+7 (702) 113 79 37 abai_zhastar@mail.ru</p>
+        </div>
+        <div class="modal__content">
+            <h1 class="modal__city">Көкпекті</h1>
+            <h2 class="modal__name">Мырзаханова Гүлімай Махмутқызы</h2>
+            <p class="modal__communications">+7 (705) 260 91 38 gulimay02@gmail.com</p>
+        </div>
+        <div class="modal__content">
+            <h1 class="modal__city">Ақсуат</h1>
+            <h2 class="modal__name">Карл Әбілсейіт Мирланұлы</h2>
+            <p class="modal__communications">+7 (747) 245 90 41 a.k.m.007.kz@gmail.com</p>
+        </div>
+        <div class="modal__content">
+            <h1 class="modal__city">Жарма</h1>
+            <h2 class="modal__name">Галымбекова Диана Ерлановна</h2>
+            <p class="modal__communications">+7 (707) 997 12 85 di.kabdullina@mail.ru</p>
+        </div>
+        <div class="modal__content">
+            <h1 class="modal__city">Аягөз</h1>
+            <h2 class="modal__name">Исагалиев Жанибек Ахмадиұлы</h2>
+            <p class="modal__communications">+7 (707) 966 08 69 mc6vko@mail.ru</p>
+        </div>
+        <div class="modal__content">
+            <h1 class="modal__city">Үржар</h1>
+            <h2 class="modal__name">Алиева Алима Құсайнқызы</h2>
+            <p class="modal__communications">+7 (702) 652 71 93 urzharjastary@mail.ru</p>
+        </div>
+    </div>
+</div>
+
+<script src="../../login.js"></script>
+<script src="../../translation.js"></script>
+</body>
+</html>

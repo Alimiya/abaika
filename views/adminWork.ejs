@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .table-container {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Vacancies</title>
+</head>
+<body>
+<a class="navbar__item-language-switch" data-i18n="language-switch-link" href="#" style="margin-left: 10px">Казахский</a>
+<h1 style="margin-left: 10px">Admin Panel</h1>
+<div class="table-container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th data-i18n="id__link">ID</th>
+            <th data-i18n="company__link">Компания</th>
+            <th data-i18n="region__link">Region</th>
+            <th data-i18n="description__link">Description</th>
+            <th data-i18n="direction__link">Direction</th>
+            <th data-i18n="date__link">Date</th>
+            <th data-i18n="actions__link">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% works.forEach(function(work, i) { %>
+            <%if(login==='true'){%>
+            <tr>
+                <td><%= work._id %></td>
+                <td><%= work.company %></td>
+                <td><%= work.description %></td>
+                <td><%= work.direction %></td>
+                <td><%= work.regionV %></td>
+                <td><%= work.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
+                <td>
+                    <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateWorkModal<%= i %>" data-i18n="edit__modal">Edit</button>
+                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteWorkModal<%= i %>" data-i18n="delete__modal">Delete</button>
+                </td>
+            </tr>
+
+            <%- include('./components/editVacancyModal');%>
+
+
+            <%- include('./components/deleteVacancyModal');%>
+            <%}%>
+
+        <%if(login==='semey' && work.regionV==="Семей"){%>
+            <tr>
+                <td><%= work._id %></td>
+                <td><%= work.company %></td>
+                <td><%= work.description %></td>
+                <td><%= work.direction %></td>
+                <td><%= work.regionV %></td>
+                <td><%= work.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
+                <td>
+                    <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateWorkModal<%= i %>" data-i18n="edit__modal">Edit</button>
+                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteWorkModal<%= i %>" data-i18n="delete__modal">Delete</button>
+                </td>
+            </tr>
+
+            <%- include('./components/editVacancyModal');%>
+
+
+            <%- include('./components/deleteVacancyModal');%>
+        <%}%>
+
+        <%if(login==='kurchatov' && work.regionV==="Курчатов"){%>
+            <tr>
+                <td><%= work._id %></td>
+                <td><%= work.company %></td>
+                <td><%= work.description %></td>
+                <td><%= work.direction %></td>
+                <td><%= work.regionV %></td>
+                <td><%= work.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
+                <td>
+                    <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateWorkModal<%= i %>" data-i18n="edit__modal">Edit</button>
+                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteWorkModal<%= i %>" data-i18n="delete__modal">Delete</button>
+                </td>
+            </tr>
+
+            <%- include('./components/editVacancyModal');%>
+
+
+            <%- include('./components/deleteVacancyModal');%>
+        <%}%>
+
+        <%if(login==='abai'&& work.regionV==="Абай"){%>
+            <tr>
+                <td><%= work._id %></td>
+                <td><%= work.company %></td>
+                <td><%= work.description %></td>
+                <td><%= work.direction %></td>
+                <td><%= work.regionV %></td>
+                <td><%= work.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
+                <td>
+                    <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateWorkModal<%= i %>" data-i18n="edit__modal">Edit</button>
+                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteWorkModal<%= i %>" data-i18n="delete__modal">Delete</button>
+                </td>
+            </tr>
+
+            <%- include('./components/editVacancyModal');%>
+
+
+            <%- include('./components/deleteVacancyModal');%>
+        <%}%>
+
+        <%if(login==='aksuat'&& work.regionV==="Аксуат"){%>
+            <tr>
+                <td><%= work._id %></td>
+                <td><%= work.company %></td>
+                <td><%= work.description %></td>
+                <td><%= work.direction %></td>
+                <td><%= work.regionV %></td>
+                <td><%= work.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
+                <td>
+                    <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateWorkModal<%= i %>" data-i18n="edit__modal">Edit</button>
+                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteWorkModal<%= i %>" data-i18n="delete__modal">Delete</button>
+                </td>
+            </tr>
+
+            <%- include('./components/editVacancyModal');%>
+
+
+            <%- include('./components/deleteVacancyModal');%>
+        <%}%>
+
+        <%if(login==='ayagoz'&& work.regionV==="Аягоз"){%>
+            <tr>
+                <td><%= work._id %></td>
+                <td><%= work.company %></td>
+                <td><%= work.description %></td>
+                <td><%= work.direction %></td>
+                <td><%= work.regionV %></td>
+                <td><%= work.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
+                <td>
+                    <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateWorkModal<%= i %>" data-i18n="edit__modal">Edit</button>
+                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteWorkModal<%= i %>" data-i18n="delete__modal">Delete</button>
+                </td>
+            </tr>
+
+            <%- include('./components/editVacancyModal');%>
+
+
+            <%- include('./components/deleteVacancyModal');%>
+        <%}%>
+
+        <%if(login==='borodulikha' && work.regionV==="Бородулиха"){%>
+            <tr>
+                <td><%= work._id %></td>
+                <td><%= work.company %></td>
+                <td><%= work.description %></td>
+                <td><%= work.direction %></td>
+                <td><%= work.regionV %></td>
+                <td><%= work.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
+                <td>
+                    <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateWorkModal<%= i %>" data-i18n="edit__modal">Edit</button>
+                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteWorkModal<%= i %>" data-i18n="delete__modal">Delete</button>
+                </td>
+            </tr>
+
+            <%- include('./components/editVacancyModal');%>
+
+
+            <%- include('./components/deleteVacancyModal');%>
+        <%}%>
+
+        <%if(login==='beskaragai' && work.regionV==="Бескарагай"){%>
+            <tr>
+                <td><%= work._id %></td>
+                <td><%= work.company %></td>
+                <td><%= work.description %></td>
+                <td><%= work.direction %></td>
+                <td><%= work.regionV %></td>
+                <td><%= work.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
+                <td>
+                    <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateWorkModal<%= i %>" data-i18n="edit__modal">Edit</button>
+                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteWorkModal<%= i %>" data-i18n="delete__modal">Delete</button>
+                </td>
+            </tr>
+
+            <%- include('./components/editVacancyModal');%>
+
+
+            <%- include('./components/deleteVacancyModal');%>
+        <%}%>
+
+        <%if(login==='kokpekti'&& work.regionV==="Кокпекти"){%>
+            <tr>
+                <td><%= work._id %></td>
+                <td><%= work.company %></td>
+                <td><%= work.description %></td>
+                <td><%= work.direction %></td>
+                <td><%= work.regionV %></td>
+                <td><%= work.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
+                <td>
+                    <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateWorkModal<%= i %>" data-i18n="edit__modal">Edit</button>
+                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteWorkModal<%= i %>" data-i18n="delete__modal">Delete</button>
+                </td>
+            </tr>
+
+            <%- include('./components/editVacancyModal');%>
+
+
+            <%- include('./components/deleteVacancyModal');%>
+        <%}%>
+
+        <%if(login==='zharma'&& work.regionV==="Жармин"){%>
+            <tr>
+                <td><%= work._id %></td>
+                <td><%= work.company %></td>
+                <td><%= work.description %></td>
+                <td><%= work.direction %></td>
+                <td><%= work.regionV %></td>
+                <td><%= work.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
+                <td>
+                    <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateWorkModal<%= i %>" data-i18n="edit__modal">Edit</button>
+                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteWorkModal<%= i %>" data-i18n="delete__modal">Delete</button>
+                </td>
+            </tr>
+
+            <%- include('./components/editVacancyModal');%>
+
+
+            <%- include('./components/deleteVacancyModal');%>
+        <%}%>
+
+        <%if(login==='urzhar'&& work.regionV==="Урджар"){%>
+            <tr>
+                <td><%= work._id %></td>
+                <td><%= work.company %></td>
+                <td><%= work.description %></td>
+                <td><%= work.direction %></td>
+                <td><%= work.regionV %></td>
+                <td><%= work.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
+                <td>
+                    <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateWorkModal<%= i %>" data-i18n="edit__modal">Edit</button>
+                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteWorkModal<%= i %>" data-i18n="delete__modal">Delete</button>
+                </td>
+            </tr>
+
+            <%- include('./components/editVacancyModal');%>
+
+
+            <%- include('./components/deleteVacancyModal');%>
+        <%}%>
+        <% }); %>
+        </tbody>
+    </table>
+</div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4  d-flex justify-content-between">
+        <button onclick="window.location.href='/'" class="btn btn-success btn-group" style="margin-left: 10px" data-i18n="main__admin">Main</button>
+            <button type="button" class="btn btn-success btn-group" data-bs-toggle="modal" data-bs-target="#addWorksModal" data-i18n="add__modal">Add Vacancy</button>
+            <button type="button" class="btn btn-primary btn-group" onclick="window.location.href='/admin/users'" data-i18n="button__users">Users</button>
+            <form action="/logout" method="get">
+            <button type="submit" class="btn btn-danger btn-group" data-i18n="logout__link">Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('./components/addVacancyModal');%>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/i18next/dist/umd/i18next.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+<script src="../../translation.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>
